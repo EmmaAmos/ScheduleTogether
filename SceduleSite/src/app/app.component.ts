@@ -19,6 +19,10 @@ export class AppComponent {
     this.getscheduleEvent();
   }
 
+  onSelect(scheduleEvent: any) {
+    this.selectEvent = scheduleEvent;
+  }
+
   removeEvent(id: string){
     const postData = {"scheduleEvent" : id}
     this.http.post('http://localhost:3000/api/scheduleEvent/destroy', postData).subscribe(res =>{
@@ -35,4 +39,9 @@ addNewEvent(formData){
   }, err =>{
     console.log(err)
   })
+}
+
+
+getSelectEvent (){
+  this.http.get('http://localhost:3000/api/scheduleEvent')
 }

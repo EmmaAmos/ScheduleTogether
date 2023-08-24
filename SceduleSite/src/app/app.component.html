@@ -6,6 +6,24 @@
   <title>Document</title>
 </head>
 <body>
+    <!--Adding Event to Schedule-->
+  <button type="button" (click)="addEvent(formData)">Add to Schedule </button>
+   <!--If addEvent is active-->
+   <div *ngIf="addEvent">
+    <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" [(ngModel)]="selectEvent.name">
+      <br>
+      <label for="event">Event:</label>
+      <br>
+      <input type="text" id="event" name="event" [(ngModel)]="selectEvent.event">
+      <br>
+      <label for="date">Date:</label>
+      <input type="text" id="date" name="date" [(ngModel)]="selectEvent.date">
+      <br>
+      <input type="submit" value="Save">
+   </div>
+
+  <!--Showing Event Schedule-->
   <tbody (click)="onSelect(scheduleEvent)" *ngFor="let scheduleEvent of scheduleEvent"> </tbody>
   <td class="hidden">{{scheduleEvent._id}}</td>
   <td>{{scheduleEvent.name}}</td>
@@ -13,9 +31,25 @@
   <td>{{scheduleEvent.date}}</td>
   <td><button type="button" (click)="removeEvent(scheduleEvent._id)">Delete</button></td>
 
-  
-
-
+  <!--Editing Event-->
+  <!--If OnSelect is active-->
+  <div *ngIf="selectEvent">
+    <h1>Edit Your Schedule</h1>
+    <form (ngSubmit)="updateEvent(selectEvent._id)">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" [(ngModel)]="selectEvent.name">
+      <br>
+      <label for="event">Event:</label>
+      <br>
+      <input type="text" id="event" name="event" [(ngModel)]="selectEvent.event">
+      <br>
+      <label for="date">Date:</label>
+      <input type="text" id="date" name="date" [(ngModel)]="selectEvent.date">
+      <br>
+      <input type="submit" value="Save">
+      <button type="button" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
 
 </body>
 </html>

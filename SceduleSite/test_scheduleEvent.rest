@@ -1,0 +1,41 @@
+GET http://localhost:3000/api/scheduleEvent HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/scheduleEvent/show HTTP/1.1
+content-type: application/json
+
+{
+    "eventScheduleID": "64e7ae0e1ed06ce877d1af28"
+}
+
+###
+
+POST http://localhost:3000/api/scheduleEvent/store HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Feed Dog",
+    "event": "Feed the dog.",
+    "date": "8.24.2023"
+}
+
+###
+
+POST http://localhost:3000/api/scheduleEvent/update HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Feed Dog",
+    "event": "Feed the dog. Remember only a 1/4 cup.",
+    "date": "8.24.2023"
+}
+
+###
+
+POST http://localhost:3000/api/scheduleEvent/destory HTTP/1.1
+content-type: application/json
+
+{
+    "eventScheduleID": "64e7ae0e1ed06ce877d1af28"
+}

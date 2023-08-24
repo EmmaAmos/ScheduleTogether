@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HttpClient} from '@angular/common/HttpClient';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,29 @@ export class AppComponent {
   title = 'SceduleSite';
 
   scheduleEvent!: any[];
-  FormData: any={};
+  formData: any={};
   selectEvent: any;
 
   constructor(private http:HttpClient) {}
+
+  ngOnInit(){
+    this.getscheduleEvent();
+  }
+
+  removeEvent(id: string){
+    const postData = {"scheduleEvent" : id}
+    this.http.post('http://localhost:3000/api/scheduleEvent/destroy', postData).subscribe(res =>{
+      console.log(res)
+    }, err =>{
+      console.log(err)
+    })
+  }
+}
+
+addNewEvent(formData){
+  this.http.post('http://localhost:3000/api/scheduleEvent/store', formData).subscribe(res => {
+    console.log(res)
+  }, err =>{
+    console.log(err)
+  })
 }

@@ -42,6 +42,23 @@ addNewEvent(formData){
 }
 
 
-getSelectEvent (){
-  this.http.get('http://localhost:3000/api/scheduleEvent')
+getscheduleEvent (){
+  this.http.get('http://localhost:3000/api/scheduleEvent').subscribe(data=>{
+    this.scheduleEvent = Object.values(data)
+    this.scheduleEvent = this.scheduleEvent[0]
+  })
+}
+
+updateEvent(id: string){
+  const putData = {
+    "eventID": id,
+    "name": this.scheduleEvent.name,
+    "event": this.scheduleEvent.event,
+    "date": this.scheduleEvent.date,
+  }
+  this.http.post('http://localhost:3000/api/scheduleEvent/update', putdata).subscribe(res =>{
+    this.selectEvent = null;
+ }, err =>{
+  console.log(err)
+  });
 }

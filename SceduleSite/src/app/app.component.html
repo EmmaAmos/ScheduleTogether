@@ -30,7 +30,7 @@
   <tbody (click)="onSelect(scheduleEvent)" *ngFor="let scheduleEvent of scheduleEvent"> </tbody>
   <td class="hidden">{{scheduleEvent._id}}</td>
   <td>{{scheduleEvent.name}}</td>
-  <td>{{}scheduleEvent.event}</td>
+  <td>{{scheduleEvent.event}}</td>
   <td>{{scheduleEvent.date}}</td>
   <td><button type="button" (click)="removeEvent(scheduleEvent._id)">Delete</button></td>
 

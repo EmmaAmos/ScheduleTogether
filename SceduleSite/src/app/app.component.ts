@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  addNewEvent(formData) {
+  addEvent(formData) {
     this.http.post('http://localhost:3000/api/scheduleEvent/store', formData).subscribe(
       res => {
         console.log(res);
